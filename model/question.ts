@@ -4,7 +4,6 @@ export default class QuestionModel {
   #id: number
   #utterance: string
   #answers: AnswerModel[]
- // #answered: boolean
   #guessed: boolean
 
   constructor(id: number, utterance: string, answers: AnswerModel[], guessed = false){
@@ -36,5 +35,14 @@ export default class QuestionModel {
     }
 
     return false
+  }
+
+  toObject() {
+    return {
+      id: this.#id,
+      utterance: this.#utterance,
+      answers: this.#answers.map(resp => resp.toObject()),
+      guessed: this.#guessed
+    }
   }
 }
