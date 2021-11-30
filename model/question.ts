@@ -38,6 +38,16 @@ export default class QuestionModel {
     return false
   }
 
+  answerIndex(index: number): QuestionModel {
+    const guessed = this.#answers[index]?.correct
+    const answers = this.#answers.map((answer, i) => {
+      const selectedAnswer = index === i
+      const mustReveal = selectedAnswer || answer.correct
+      return mustReveal ? answer.toReveal() : answer
+    })
+    return new QuestionModel(this.id, this.utterance, answers, guessed)
+  }
+
   scramblesAnswer(): QuestionModel {
     let scrambledAnswers = shuffle(this.#answers)
     return new QuestionModel(this.#id, this.#utterance, scrambledAnswers, this.#guessed)
