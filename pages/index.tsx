@@ -4,7 +4,7 @@ import QuestionModel from '../model/question'
 
 
 export default function Home() {
-  const teste = new QuestionModel(1, 'better color', [
+  const teste = new QuestionModel(1, 'Better color?', [
     AnswerModel.wrong('green'),
     AnswerModel.wrong('blue'),
     AnswerModel.wrong('yellow'),
@@ -12,6 +12,13 @@ export default function Home() {
   ])
 
   return (
-    <Question value={teste} />
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh'
+    }}>
+      <Question value={teste} />
+    </div>
   )
 }
