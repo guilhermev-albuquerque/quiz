@@ -1,6 +1,6 @@
-export function shuffle (elements: any[]): any[] {
+export function shuffle(elements: any[]): any[] {
   return elements
-    .map(value => ({ value, random: Math.random() }))
+    .map((value) => ({ value, random: Math.random() }))
     .sort((obj1, obj2) => obj1.random - obj2.random)
-    .map(obj => obj.value)
+    .map((obj) => obj.value);
 }

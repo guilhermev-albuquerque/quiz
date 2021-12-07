@@ -17,28 +17,31 @@ export default function Answer(props: AnswerProps) {
       onClick={() => props.onResponse(props.index)}
     >
       <div className={styles.answerContent}>
-        {/*<div className={styles.front}>
-          <div
-            className={styles.letter}
-            style={{ backgroundColor: props.letterBackColor }}
-          >
-            {props.letter}
+        {!answer.revealed ? (
+          <div className={styles.front}>
+            <div
+              className={styles.letter}
+              style={{ backgroundColor: props.letterBackColor }}
+            >
+              {props.letter}
+            </div>
+            <div className={styles.value}>{answer.value}</div>
           </div>
-          <div className={styles.value}>{answer.value}</div>
-        </div>*/}
-        <div className={styles.back}>
-          {answer.correct ? (
-            <div className={styles.correct}>
-              <div>A resposta certa é...</div>
-              <div className={styles.value}>{answer.value}</div>
-            </div>
-          ) : (
-            <div className={styles.wrong}>
-              <div>A resposta informada está errada...</div>
-              <div className={styles.value}>{answer.value}</div>
-            </div>
-          )}
-        </div>
+        ) : (
+          <div className={styles.back}>
+            {answer.correct ? (
+              <div className={styles.correct}>
+                <div>A resposta certa é...</div>
+                <div className={styles.value}>{answer.value}</div>
+              </div>
+            ) : (
+              <div className={styles.wrong}>
+                <div>A resposta informada está errada...</div>
+                <div className={styles.value}>{answer.value}</div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
